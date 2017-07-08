@@ -1,0 +1,12 @@
+name: EasyReport
+version: 1.0
+author: luguco
+main: me.luguco.easyreport.main.EasyReport
+
+commands:
+  report:
+    description: Report a player
+    usage: </report> <player> <reason>
+  reports:
+    description: See all reports
+    usage: </reports>

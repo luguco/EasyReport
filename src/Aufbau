@@ -1,0 +1,38 @@
+Version: 1.11.2
+MySql usage
+New version: Bungee System
+Message in Config
+
+
+
+
+
+Commands:
+  /report <Spieler> <Grund> <Beweis> ----- Report a player
+  /reports ----- Show all reports
+
+
+  report -> (Player target, Player sender; String message; Date date - Time time;
+         -> Target Name in Table + Report Counter
+
+
+  reports -> Open an Inventory --> Contains: (Woolblock blue|green) Name: Reports; Hover show: sender, target message, status; Headline also sender
+
+  Woolblock: open Inventory Headline sender ; l->r  sender Head(Name, online|offline), target Head(Name, online|offline), message(Message), status(status), go back(go back), delete(delete)
+
+
+  sender Head: Inventory kill()kill, kick(kick), mesage(message), teleport(teleport), go back(goto Report by sender)
+
+        kill: Kill the player (config)
+        kick: Kick the player(config)
+        message: Inventory Messages: paper(message)
+                paper: send player message
+        teleport:
+        go back: open Inventory like Woolblock click
+  target Head: see sender
+  message: //// Nothing
+  status: update status
+  go back: go to reports inventory
+  delete: delete the report (if enabled store in external Table)
+
+
