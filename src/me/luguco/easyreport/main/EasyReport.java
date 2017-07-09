@@ -42,12 +42,12 @@ public class EasyReport extends JavaPlugin{
 
     }
 
-    public void loadConfig(){
+    private void loadConfig(){
         getConfig().options().copyDefaults(true);
         saveConfig();
     }
 
-    public void registerCommands(){
+    private void registerCommands(){
 
         Report cReport= new Report(this);
         getCommand("report").setExecutor(cReport);
@@ -57,7 +57,7 @@ public class EasyReport extends JavaPlugin{
 
     }
 
-    public void loadClasses(){
+    private void loadClasses(){
         new setDefaultFiles(this);
         new MySQLConnection(this);
     }
