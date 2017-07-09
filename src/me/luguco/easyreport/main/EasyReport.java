@@ -61,5 +61,4 @@ public class EasyReport extends JavaPlugin{
         new setDefaultFiles(this);
         new MySQLConnection(this);
     }
-    //check
 }
