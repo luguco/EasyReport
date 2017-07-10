@@ -6,7 +6,7 @@ main: me.luguco.easyreport.main.EasyReport
 commands:
   report:
     description: Report a player
-    usage: </report> <player> <reason>
+    usage: </report> <player> <reason> <proof>
   reports:
     description: See all reports
     usage: </reports>

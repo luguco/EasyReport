@@ -19,7 +19,6 @@ public class MySQLCreateTable {
             } catch (SQLException e) {
 
                 try {
-
                     ps = MySQLConnection.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS `ReportedPlayer` (`Player` VARCHAR(100),`UUID` VARCHAR (100),`Reason` VARCHAR(100),`Proof` VARCHAR(100),`Reporter` VARCHAR(100),`Date` TIMESTAMP default CURRENT_TIMESTAMP,`Report_Seen` VARCHAR(100),`Supporter` VARCHAR(100))");
                     ps.executeUpdate();
                     ps = MySQLConnection.getConnection().prepareStatement("ALTER TABLE ReportedPlayer AUTO_INCREMENT = 1;");
