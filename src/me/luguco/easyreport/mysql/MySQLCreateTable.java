@@ -49,7 +49,6 @@ public class MySQLCreateTable {
                 }
             }
 
-
             try {
                 ps = MySQLConnection.getConnection().prepareStatement(" SELECT * FROM `ClosedReports`");
                 ps.executeQuery();

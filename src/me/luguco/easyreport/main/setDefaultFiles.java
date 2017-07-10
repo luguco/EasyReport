@@ -48,6 +48,12 @@ public class setDefaultFiles {
         if(!plugin.msgcfg.contains("Messages.neuerReport")){
             plugin.msgcfg.set("Messages.neuerReport", "§cEin neuer Report ist eingegangen!");
         }
+        if(!plugin.msgcfg.contains("Messages.ReportBestätigung")){
+            plugin.msgcfg.set("Messages.ReportBestätigung", "§aDu hast %target% mit der Begründung %reason% und dem Beweis(optional) %proof% reportet!");
+        }
+        if(!plugin.msgcfg.contains("Messages.CmdUsage")){
+            plugin.msgcfg.set("Messages.CmdUsage", "§cNutze: /report Spieler Grund (optional)Beweis!");
+        }
 
         try {
             plugin.msgcfg.save(plugin.messages);
