@@ -3,7 +3,6 @@ package me.luguco.easyreport.commands;
 import me.luguco.easyreport.main.EasyReport;
 import me.luguco.easyreport.mysql.MySQLConnection;
 import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -11,7 +10,6 @@ import org.bukkit.entity.Player;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.UUID;
 
 /**
  * Created by luguco on 20.06.2017.
@@ -21,11 +19,16 @@ import java.util.UUID;
 public class Report implements CommandExecutor{
 
 
-    public String proof;
+    private String proof;
+    private String target;
+    private String taruuid;
+    private String reason;
+    private String sendermessage;
     PreparedStatement ps;
+
     private EasyReport plugin;
-    public Report(EasyReport easyReport) {
-        this.plugin = easyReport;
+    public Report(EasyReport main) {
+        this.plugin = main;
     }
 
     @Override
@@ -43,26 +46,26 @@ public class Report implements CommandExecutor{
             reporter.sendMessage(plugin.msgcfg.getString("Messages.CmdUsage"));
             return true;
         }
+        target = Bukkit.getOfflinePlayer(args[0]).toString();
+        taruuid = Bukkit.getOfflinePlayer(args[0]).getUniqueId().toString();
+        reason = args[1];
 
-        String target = Bukkit.getOfflinePlayer(args[0]).toString();
-        String taruuid = Bukkit.getOfflinePlayer(args[0]).getUniqueId().toString();
-        String reason = args[1];
+        if(args.length > 2) {
 
-        if(args.length > 2){
-
-            for(int i = 1; i < args.length; i++){
-               proof = proof + args[1] + " ";
+            for (int i = 1; i < args.length; i++) {
+                proof = proof + args[1] + " ";
             }
+        }
 
             if(!MySQLConnection.isConnected()){
                 sender.sendMessage("§cEin Fehler ist aufgetreten! Bitte kontaktiere eine Teammitglied!");
                 return true;
             }
 
-            String sendermessage = plugin.msgcfg.getString("ReportBestätigung");
-            sendermessage.replaceAll("%target%", target);
-            sendermessage.replaceAll("%reason%", reason);
-            sendermessage.replaceAll("%proof%", proof);
+            sendermessage = plugin.msgcfg.getString("ReportBestätigung");
+            sendermessage = sendermessage.replace("%target%", target);
+            sendermessage = sendermessage.replace("%reason%", reason);
+            sendermessage = sendermessage.replace("%proof%", proof);
             sender.sendMessage(sendermessage);
 
             try {
@@ -82,9 +85,6 @@ public class Report implements CommandExecutor{
                     admins.sendMessage(plugin.msgcfg.getString("Messages.neuerReport"));
                 }
             }
-        }
-
-
 
         return true;
     }

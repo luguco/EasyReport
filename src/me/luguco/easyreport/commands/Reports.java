@@ -10,8 +10,8 @@ import org.bukkit.command.CommandSender;
  */
 public class Reports implements CommandExecutor{
     private EasyReport plugin;
-    public Reports(EasyReport easyReport) {
-        this.plugin = easyReport;
+    public Reports(EasyReport main) {
+        this.plugin = main;
     }
 
     @Override

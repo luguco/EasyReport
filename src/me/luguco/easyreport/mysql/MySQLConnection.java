@@ -14,8 +14,8 @@ public class MySQLConnection {
 
     private static EasyReport plugin;
 
-    public MySQLConnection(EasyReport easyReport) {
-        this.plugin = easyReport;
+    public MySQLConnection(EasyReport main) {
+        this.plugin = main;
     }
 
     public static Connection con;

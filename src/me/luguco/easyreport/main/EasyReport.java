@@ -9,6 +9,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.io.IOException;
 
 
 /**
@@ -16,14 +17,15 @@ import java.io.File;
  */
 public class EasyReport extends JavaPlugin{
 
-    public File mysql = new File("plugins/EasyReport", "mysql.yml");
-    public YamlConfiguration mycfg = YamlConfiguration.loadConfiguration(mysql);
+    public  static File mysql = new File("plugins/EasyReport", "mysql.yml");
+    public static YamlConfiguration mycfg = YamlConfiguration.loadConfiguration(mysql);
 
-    public File messages = new File("plugins/EasyReport", "messages.yml");
-    public YamlConfiguration msgcfg = YamlConfiguration.loadConfiguration(messages);
+    public static File messages = new File("plugins/EasyReport", "messages.yml");
+    public static YamlConfiguration msgcfg = YamlConfiguration.loadConfiguration(messages);
 
     @Override
     public void onEnable(){
+
         Bukkit.getConsoleSender().sendMessage("§a[EasyReport] enabled!");
 
         loadConfig();
@@ -45,6 +47,21 @@ public class EasyReport extends JavaPlugin{
     private void loadConfig(){
         getConfig().options().copyDefaults(true);
         saveConfig();
+
+        if(!messages.exists()){
+            try {
+                messages.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(!mysql.exists()){
+            try {
+                mysql.createNewFile();
+            } catch (IOException e) {
+            }
+        }
     }
 
     private void registerCommands(){
