@@ -69,7 +69,7 @@ public class Report implements CommandExecutor{
             sender.sendMessage(sendermessage);
 
             try {
-                ps = MySQLConnection.getConnection().prepareStatement("INSERT INTO ReportedPlayer (`Player`,`UUID`,`Reason`,`Proof`,`Reporter`,`Report_Seen`,`Supporter`) VALUES (?,?,?,?,?,'false','NULL')");
+                ps = MySQLConnection.getConnection().prepareStatement("INSERT INTO ReportedPlayer (`Player`,`UUID`,`Reason`,`Proof`,`Reporter`,`Report_Claimed`,`Supporter`) VALUES (?,?,?,?,?,'false','NULL')");
                 ps.setString(1, target);
                 ps.setString(2, taruuid);
                 ps.setString(3, reason);
