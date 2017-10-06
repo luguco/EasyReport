@@ -33,6 +33,7 @@ public class MySQLConnection {
                     Bukkit.getConsoleSender().sendMessage("§aVerbindung hergestellt!");
                 } catch (SQLException e) {
                 Bukkit.getConsoleSender().sendMessage("§cMySQL Verbindung konnte nicht hergestellt werden!");
+                Bukkit.getPluginManager().disablePlugin(plugin);
             }
         }
     }

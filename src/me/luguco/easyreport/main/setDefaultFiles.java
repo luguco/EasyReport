@@ -1,5 +1,7 @@
 package me.luguco.easyreport.main;
 
+import org.bukkit.Bukkit;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -33,7 +35,8 @@ public class setDefaultFiles {
         try {
             plugin.mycfg.save(plugin.mysql);
         } catch (IOException e) {
-            e.printStackTrace();
+            Bukkit.getConsoleSender().sendMessage("§c[EasyReport] Failed to create lines in file 'mysql'!");
+            Bukkit.getPluginManager().disablePlugin(plugin);
         }
 
         ArrayList<String> lores = new ArrayList<>();
@@ -58,7 +61,8 @@ public class setDefaultFiles {
         try {
             plugin.msgcfg.save(plugin.messages);
         } catch (IOException e) {
-            e.printStackTrace();
+            Bukkit.getConsoleSender().sendMessage("§c[EasyReport] Failed to create lines in file 'messages'!");
+            Bukkit.getPluginManager().disablePlugin(plugin);
         }
     }
 }

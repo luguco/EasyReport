@@ -34,7 +34,6 @@ public class EasyReport extends JavaPlugin{
         setDefaultFiles.setFiles();
         MySQLConnection.connect();
         MySQLCreateTable.CreateTables();
-
     }
 
     @Override
@@ -52,7 +51,8 @@ public class EasyReport extends JavaPlugin{
             try {
                 messages.createNewFile();
             } catch (IOException e) {
-                e.printStackTrace();
+                Bukkit.getConsoleSender().sendMessage("§c[EasyReport] Failed to create file 'messages'!");
+                Bukkit.getPluginManager().disablePlugin(this);
             }
         }
 
@@ -60,6 +60,8 @@ public class EasyReport extends JavaPlugin{
             try {
                 mysql.createNewFile();
             } catch (IOException e) {
+                Bukkit.getConsoleSender().sendMessage("§c[EasyReport] Failed to create file 'mysql'!");
+                Bukkit.getPluginManager().disablePlugin(this);
             }
         }
     }
