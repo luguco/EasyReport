@@ -49,11 +49,20 @@ public class MySQLCreateTable {
             }
 
             try {
-                ps = MySQLConnection.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS `ClosedReports` (`Player` VARCHAR(100),`UUID` VARCHAR (100),`Reason` VARCHAR(100),`Proof` VARCHAR(100),`Reporter` VARCHAR(100),`Date` DATETIME,`CloseDate` TIMESTAMP default CURRENT_TIMESTAMP,`Closer` VARCHAR(100),`Result`VARCHAR(100))");
-                ps.executeUpdate();
-                ps = MySQLConnection.getConnection().prepareStatement("ALTER TABLE `ClosedReports` AUTO_INCREMENT = 1;");
-                ps.executeUpdate();
-                ps = MySQLConnection.getConnection().prepareStatement("ALTER TABLE `ClosedReports` ADD `Count` INT PRIMARY KEY AUTO_INCREMENT FIRST");
+                ps = MySQLConnection.getConnection().prepareStatement(
+                        "CREATE TABLE IF NOT EXISTS `ClosedReports` (\n" +
+                                "  `Count` int(11) NOT NULL AUTO_INCREMENT,\n" +
+                                "  `Player` varchar(100)  DEFAULT NULL,\n" +
+                                "  `UUID` varchar(100)  DEFAULT NULL,\n" +
+                                "  `Reason` varchar(100)  DEFAULT NULL,\n" +
+                                "  `Proof` varchar(100)  DEFAULT NULL,\n" +
+                                "  `Reporter` varchar(100)  DEFAULT NULL,\n" +
+                                "  `Date` datetime DEFAULT NULL,\n" +
+                                "  `CloseDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n" +
+                                "  `Closer` varchar(100)  DEFAULT NULL,\n" +
+                                "  `Result` varchar(100)  DEFAULT NULL,\n" +
+                                "  PRIMARY KEY (`Count`)\n" +
+                                ")");
                 ps.executeUpdate();
             } catch (SQLException e1) {
                 e1.printStackTrace();
